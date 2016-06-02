@@ -7,20 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * user表
- * @author Fantasy
- *
- */
+
+
 @Entity
-@Table(name="t_user")
-public class UserPo extends BasePo {
-	
+@Table(name = "t_student_user")
+public class StudentUserPo extends BasePo{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer userId;
-	// 用户名
-	private String userName;
+//	// 用户名
+//	private String userName;
 	// 密码
 	private String password;
 	// 真实姓名
@@ -28,7 +24,7 @@ public class UserPo extends BasePo {
 	// 身份证
 	private String IDCardNumber;
 	// 学号
-	private String StudentNumber;
+	private String studentNumber;
 	// 联系电话
 	private String phone;
 	// 上次登陆时间
@@ -49,10 +45,10 @@ public class UserPo extends BasePo {
 		IDCardNumber = iDCardNumber;
 	}
 	public String getStudentNumber() {
-		return StudentNumber;
+		return studentNumber;
 	}
 	public void setStudentNumber(String studentNumber) {
-		StudentNumber = studentNumber;
+		this.studentNumber = studentNumber;
 	}
 	public String getPhone() {
 		return phone;
@@ -80,32 +76,31 @@ public class UserPo extends BasePo {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+//	public String getUserName() {
+//		return userName;
+//	}
+//	public void setUserName(String userName) {
+//		this.userName = userName;
+//	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public UserPo() {
+	public StudentUserPo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public UserPo(String userName, String password) {
+	public StudentUserPo(String studentNumber, String password) {
 		super();
-		this.userName = userName;
+		this.studentNumber = studentNumber;
 		this.password = password;
 	}
 	@Override
 	public String toString() {
-		return "UserPo [userId=" + userId + ", userName=" + userName + ", password=" + password + ", realName="
-				+ realName + ", IDCardNumber=" + IDCardNumber + ", StudentNumber=" + StudentNumber + ", phone=" + phone
+		return "UserPo [userId=" + userId + ", password=" + password + ", realName="
+				+ realName + ", IDCardNumber=" + IDCardNumber + ", StudentNumber=" + studentNumber + ", phone=" + phone
 				+ ", lastLoginTime=" + lastLoginTime + ", isDelete=" + isDelete + "]";
 	}
-	
 }

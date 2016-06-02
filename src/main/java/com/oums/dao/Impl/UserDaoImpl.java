@@ -1,24 +1,25 @@
 package com.oums.dao.Impl;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.oums.bean.po.UserPo;
-import com.oums.dao.IUserDao;
+import com.oums.bean.po.StudentUserPo;
+import com.oums.dao.IStudentUserDao;
 
-@Repository("userDao")
-public class UserDaoImpl implements IUserDao {
-
+@Repository("studentUserDao")
+public class StudentUserDaoImpl implements IStudentUserDao{
+	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
 	@Override
-	public UserPo getUserByName(String userName) {		
-		return (UserPo) sessionFactory.getCurrentSession()
-				.createQuery("from UserPo u where u.userName=:userName and u.isDelete = false")
-				.setString("userName", userName)
-				.uniqueResult();
+	public StudentUserPo getStuUserByStuNum(String stuNum){
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from StudentUserPo u where u.studentNumber=:stuNum");
+		query.setString("stuNum",stuNum);
+		return (StudentUserPo)query.uniqueResult();
 	}
 
 }

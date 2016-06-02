@@ -1,26 +1,16 @@
 package com.oums.service;
 
 import com.oums.bean.ReturnMessage;
-import com.oums.bean.vo.UserVo;
+import com.oums.bean.vo.StudentUserVo;
+
 
 /**
- * 用户服务
- * @author 谭治
- *
+ * 
+ * @author Ou
+ * service for studentUser login, 
  */
-public interface IUserService {
+public interface IStudentService {
+	public ReturnMessage login(StudentUserVo studentUserVo);
 	
-	/**
-	 * 添加用户（未完善）
-	 * @return
-	 */
-	ReturnMessage addUser(UserVo userVo);
-	
-	/**
-	 * 根据用户名查找用户（未完成）
-	 * @param userName
-	 * @return
-	 */
-	ReturnMessage findUserByUserName(String userName);
-	
+
 }

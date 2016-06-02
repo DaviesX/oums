@@ -1,60 +1,63 @@
 package com.oums.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.oums.bean.ReturnMessage;
+import com.oums.bean.vo.StudentUserVo;
 import com.oums.bean.vo.UserVo;
+import com.oums.service.IStudentService;
 import com.oums.service.IUserService;
-
+import com.oums.util.JsonUtil;
 /**
- * user相关的action
- * @author 谭治
+ * 学生用户相关action
+ * @author Ou
  *
  */
+
 @ParentPackage("basePackage")
-@Namespace("/user")
-public class UserAction {
+@Namespace("/studentUser")
+public class StudentUserAction {
 	
+	private static Logger logger = LogManager.getLogger(StudentUserAction.class.getName());
 	@Autowired
-	IUserService userServer;
+	private IStudentService studentService;
 	
-	/* 可以这样获取参数，要有getset方法 */	
-	private UserVo user;
-
-	public UserVo getUser() {
-		return user;
-	}
-
-	public void setUser(UserVo user) {
-		this.user = user;
-	}
-	
+	private StudentUserVo studentUserVo;
 	private ReturnMessage returnMessage;
-	
 	public ReturnMessage getReturnMessage() {
 		return returnMessage;
 	}
-
-	public void setReturnMessage(ReturnMessage returnMessage) {
-		this.returnMessage = returnMessage;
+	public StudentUserVo getStudentUserVo() {
+		return studentUserVo;
 	}
-
+	public void setStudentUserVo(StudentUserVo studentUserVo) {
+		this.studentUserVo = studentUserVo;
+	}
 	/**
-	 * 注册 这种返回json字符串
-	 * @return
-	 * http://localhost:8080/OUMS/user/register
+	 * 学生用户登陆action
+	 * 
 	 */
-	@Action(value="register")
-	public void register() {
-
-		returnMessage = userServer.addUser(user);    
-        
-		//打印
-		System.out.println(returnMessage);
-
+	@Action(value="studentLogin", results={@Result(name = "success", location = "/jsp/userManagement/studentHome.jsp"), @Result(name = "fail", location = "/jsp/userManagement/login.jsp")})	
+	public String studentLogin() {
+		logger.info("studentLogin.StudentUserAction");
+		returnMessage = studentService.login(studentUserVo);
+		if(returnMessage.isFlat()){
+			System.out.println(StudentUserAction.class.getName() + "success");
+			return "success";
+		}
+		System.out.println(StudentUserAction.class.getName() + "fail");
+			return "fail";
 	}
-	
 }
