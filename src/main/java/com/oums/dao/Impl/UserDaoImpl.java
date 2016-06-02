@@ -5,21 +5,20 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.oums.bean.po.UserPo;
+import com.oums.dao.IUserDao;
 
-import com.oums.bean.po.StudentUserPo;
-import com.oums.dao.IStudentUserDao;
-
-@Repository("studentUserDao")
-public class StudentUserDaoImpl implements IStudentUserDao{
+@Repository("userDao")
+public class UserDaoImpl implements IUserDao{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	@Override
-	public StudentUserPo getStuUserByStuNum(String stuNum){
+	public UserPo getUserByCerNum(String cerNum){
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from StudentUserPo u where u.studentNumber=:stuNum");
-		query.setString("stuNum",stuNum);
-		return (StudentUserPo)query.uniqueResult();
+		Query query = session.createQuery("from UserPo u where u.certificateNumber=:cerNum");
+		query.setString("cerNum",cerNum);
+		return (UserPo)query.uniqueResult();
 	}
 
 }

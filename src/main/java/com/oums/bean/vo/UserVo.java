@@ -2,7 +2,7 @@ package com.oums.bean.vo;
 
 import java.util.Date;
 
-public class StudentUserVo {
+public class UserVo {
 
 		private Integer userId;
 		// 用户名
@@ -14,26 +14,18 @@ public class StudentUserVo {
 		// 身份证
 		private String IDCardNumber;
 		// 学号
-		private String studentNumber;
+		private String certificateNumber;
 		// 联系电话
 		private String phone;
 		// 上次登陆时间
 		private Date lastLoginTime;
 		// 是否删除
 		private Boolean isDelete;
-		public StudentUserVo(String userName, String password) {
-			super();
-			this.userName = userName;
-			this.password = password;
-		}
-		public StudentUserVo() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+
 		@Override
 		public String toString() {
 			return "UserVo [userId=" + userId + ", userName=" + userName + ", password=" + password + ", realName="
-					+ realName + ", IDCardNumber=" + IDCardNumber + ", StudentNumber=" + studentNumber + ", phone=" + phone
+					+ realName + ", IDCardNumber=" + IDCardNumber + ", certificateNumber=" + certificateNumber + ", phone=" + phone
 					+ ", lastLoginTime=" + lastLoginTime + ", isDelete=" + isDelete + "]";
 		}
 		public Integer getUserId() {
@@ -66,11 +58,11 @@ public class StudentUserVo {
 		public void setIDCardNumber(String iDCardNumber) {
 			IDCardNumber = iDCardNumber;
 		}
-		public String getStudentNumber() {
-			return studentNumber;
+		public String getCertificateNumber() {
+			return certificateNumber;
 		}
-		public void setStudentNumber(String studentNumber) {
-			this.studentNumber = studentNumber;
+		public void setCertificateNumber(String certificateNumber) {
+			this.certificateNumber = certificateNumber;
 		}
 		public String getPhone() {
 			return phone;

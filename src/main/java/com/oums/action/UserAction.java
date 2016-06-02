@@ -15,9 +15,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.oums.bean.ReturnMessage;
-import com.oums.bean.vo.StudentUserVo;
 import com.oums.bean.vo.UserVo;
-import com.oums.service.IStudentService;
 import com.oums.service.IUserService;
 import com.oums.util.JsonUtil;
 /**
@@ -27,37 +25,35 @@ import com.oums.util.JsonUtil;
  */
 
 @ParentPackage("basePackage")
-@Namespace("/studentUser")
-public class StudentUserAction {
+@Namespace("/user")
+public class UserAction {
 	
-	private static Logger logger = LogManager.getLogger(StudentUserAction.class.getName());
+	private static Logger logger = LogManager.getLogger(UserAction.class.getName());
 	@Autowired
-	private IStudentService studentService;
+	private IUserService userService;
 	
-	private StudentUserVo studentUserVo;
+	private UserVo userVo;
 	private ReturnMessage returnMessage;
 	public ReturnMessage getReturnMessage() {
 		return returnMessage;
 	}
-	public StudentUserVo getStudentUserVo() {
-		return studentUserVo;
+	public UserVo getUserVo() {
+		return userVo;
 	}
-	public void setStudentUserVo(StudentUserVo studentUserVo) {
-		this.studentUserVo = studentUserVo;
+	public void setUserVo(UserVo userVo) {
+		this.userVo = userVo;
 	}
 	/**
 	 * 学生用户登陆action
 	 * 
 	 */
-	@Action(value="studentLogin", results={@Result(name = "success", location = "/jsp/userManagement/studentHome.jsp"), @Result(name = "fail", location = "/jsp/userManagement/login.jsp")})	
+	@Action(value="userLogin", results={@Result(name = "success", location = "/jsp/userManagement/userHome.jsp"), @Result(name = "fail", location = "/jsp/userManagement/login.jsp")})	
 	public String studentLogin() {
-		logger.info("studentLogin.StudentUserAction");
-		returnMessage = studentService.login(studentUserVo);
+		returnMessage = userService.login(userVo);
 		if(returnMessage.isFlat()){
-			System.out.println(StudentUserAction.class.getName() + "success");
 			return "success";
 		}
-		System.out.println(StudentUserAction.class.getName() + "fail");
+		System.out.println(UserAction.class.getName() + "fail");
 			return "fail";
 	}
 }

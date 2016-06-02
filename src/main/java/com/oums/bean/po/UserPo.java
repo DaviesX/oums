@@ -10,21 +10,19 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "t_student_user")
-public class StudentUserPo extends BasePo{
+@Table(name = "t_user")
+public class UserPo extends BasePo{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer userId;
-//	// 用户名
-//	private String userName;
 	// 密码
 	private String password;
 	// 真实姓名
 	private String realName;
 	// 身份证
 	private String IDCardNumber;
-	// 学号
-	private String studentNumber;
+	// 证件号
+	private String certificateNumber;
 	// 联系电话
 	private String phone;
 	// 上次登陆时间
@@ -43,12 +41,6 @@ public class StudentUserPo extends BasePo{
 	}
 	public void setIDCardNumber(String iDCardNumber) {
 		IDCardNumber = iDCardNumber;
-	}
-	public String getStudentNumber() {
-		return studentNumber;
-	}
-	public void setStudentNumber(String studentNumber) {
-		this.studentNumber = studentNumber;
 	}
 	public String getPhone() {
 		return phone;
@@ -76,31 +68,23 @@ public class StudentUserPo extends BasePo{
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-//	public String getUserName() {
-//		return userName;
-//	}
-//	public void setUserName(String userName) {
-//		this.userName = userName;
-//	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public StudentUserPo() {
-		super();
-		// TODO Auto-generated constructor stub
+	public String getCertificateNumber() {
+		return certificateNumber;
 	}
-	public StudentUserPo(String studentNumber, String password) {
-		super();
-		this.studentNumber = studentNumber;
-		this.password = password;
+	public void setCertificateNumber(String certificateNumber) {
+		this.certificateNumber = certificateNumber;
 	}
+
 	@Override
 	public String toString() {
 		return "UserPo [userId=" + userId + ", password=" + password + ", realName="
-				+ realName + ", IDCardNumber=" + IDCardNumber + ", StudentNumber=" + studentNumber + ", phone=" + phone
+				+ realName + ", IDCardNumber=" + IDCardNumber + ", certificateNumber=" + certificateNumber + ", phone=" + phone
 				+ ", lastLoginTime=" + lastLoginTime + ", isDelete=" + isDelete + "]";
 	}
 }

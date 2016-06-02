@@ -1,7 +1,7 @@
 package com.oums.service;
 
 import com.oums.bean.ReturnMessage;
-import com.oums.bean.vo.StudentUserVo;
+import com.oums.bean.vo.UserVo;
 
 
 /**
@@ -9,8 +9,8 @@ import com.oums.bean.vo.StudentUserVo;
  * @author Ou
  * service for studentUser login, 
  */
-public interface IStudentService {
-	public ReturnMessage login(StudentUserVo studentUserVo);
+public interface IUserService {
+	public ReturnMessage login(UserVo UserVo);
 	
 
 }

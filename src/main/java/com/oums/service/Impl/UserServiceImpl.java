@@ -3,25 +3,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oums.bean.ReturnMessage;
-import com.oums.bean.po.StudentUserPo;
-import com.oums.bean.vo.StudentUserVo;
-import com.oums.dao.IStudentUserDao;
-import com.oums.service.IStudentService;
+import com.oums.bean.po.UserPo;
+import com.oums.bean.vo.UserVo;
+import com.oums.dao.IUserDao;
+import com.oums.service.IUserService;
 /**
  * 
  * @author Ou
  *
  */
-@Service ("studentService")
-public class StudentServiceImpl implements IStudentService{
+@Service ("userService")
+public class UserServiceImpl implements IUserService{
 	
 	@Autowired
-	IStudentUserDao studentUserDao;
+	IUserDao userDao;
 	
 	@Override
-	public ReturnMessage login(StudentUserVo studentUserVo){
+	public ReturnMessage login(UserVo userVo){
 		ReturnMessage returnMessage = new ReturnMessage();
-		StudentUserPo stdPo = studentUserDao.getStuUserByStuNum(studentUserVo.getStudentNumber());
+		UserPo stdPo = userDao.getUserByCerNum(userVo.getCertificateNumber());
 		
 		if(stdPo == null){
 			returnMessage.setFlat(false);
@@ -29,7 +29,7 @@ public class StudentServiceImpl implements IStudentService{
 			return returnMessage;
 		}
 		
-		if(stdPo.getPassword() == studentUserVo.getPassword()){
+		if(stdPo.getPassword() == userVo.getPassword()){
 			returnMessage.setFlat(true);
 		}else{
 			returnMessage.setFlat(false);
