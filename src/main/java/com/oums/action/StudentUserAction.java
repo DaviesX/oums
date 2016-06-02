@@ -27,7 +27,7 @@ import com.oums.util.JsonUtil;
  */
 
 @ParentPackage("basePackage")
-@Namespace("/jsp/userManagement")
+@Namespace("/studentUser")
 public class StudentUserAction {
 	
 	private static Logger logger = LogManager.getLogger(StudentUserAction.class.getName());
