@@ -1,7 +1,9 @@
 package com.oums.service;
 
 import com.oums.bean.ReturnMessage;
+import com.oums.bean.vo.DayVo;
 import com.oums.bean.vo.SiteVo;
+import com.oums.bean.vo.WeekVo;
 
 /**
  * 场地管理
@@ -22,9 +24,15 @@ public interface ISiteManagerService {
 	ReturnMessage deleteSite(SiteVo vo);
 	
 	/**
-	 * 更新场地
+	 * 更新场地信息
 	 * @return
 	 */
 	ReturnMessage updateSite(SiteVo vo);
-		
+	
+	/**
+	 * 改变场地状态
+	 * @param vo
+	 * @return
+	 */
+	ReturnMessage updateSiteType(SiteVo vo, WeekVo weekVo, DayVo dayVo);
 }

@@ -7,9 +7,9 @@
 <title>site</title>
 </head>
 <body>
-	<a href="http://localhost:8080/OUMS/siteManager/testAddSite.action">測試</a>
+	<a href="../../siteManager/testAddSite.action">測試</a>
 
-    <form action="http://localhost:8080/OUMS/siteManager/addSite.action" method="post">
+    <form action="../../siteManager/addSite.action" method="post">
         场地名：<input name="site.siteName" type="text" /><br/>
         价格（小时）:<input name="site.siteCost" type="text" /><br/>
         场地类型:<select name="site.siteType">
@@ -24,20 +24,20 @@
     </form>
 
     <br/>
-    <form action="http://localhost:8080/OUMS/site/findSite.action" method="post">
+    <form action="../../site/findSite.action" method="post">
                        场地名:<input name="site.siteName" type="text" /><br/>
         <input type="submit" value="查找" />
     </form>
     
     <br/>
     
-    <form action="http://localhost:8080/OUMS/siteManager/deleteSite.action" method="post">
+    <form action="../../siteManager/deleteSite.action" method="post">
                        场地名:<input name="site.siteName" type="text" /><br/>
         <input type="submit" value="删除" />
     </form>
     
     <br/>
-    <form action="http://localhost:8080/OUMS/siteManager/updateSite.action" method="post">
+    <form action="../../siteManager/updateSite.action" method="post">
         场地名：<input name="site.siteName" type="text" /><br/>
         价格（小时）:<input name="site.siteCost" type="text" /><br/>
         场地类型:<select name="site.siteType">
@@ -51,5 +51,44 @@
         <input type="submit" value="更新" />
     </form>
     
+    <form action="../../site/findSiteType.action" method="post">
+                      场地类型:<select name="site.siteType">
+                    <option value="1">羽毛球场</option>
+                    <option value="2">兵乓球场</option>
+                    <option value="3">桌球场</option>
+                    <option value="4">篮球场</option>
+                    <option value="5">网球场</option>
+                </select><br/>
+        <input type="submit" value="类型查找" />
+    </form>
+    
+    <br>
+    
+    <form action="../../siteManager/updateSiteType.action" method="post">
+       	场地名：<input name="site.siteName" type="text" />
+       	星期:<select name="day.dayOfWeek">
+                    <option value="0">星期天</option>
+                    <option value="1">星期一</option>
+                    <option value="2">星期二</option>
+                    <option value="3">星期三</option>
+                    <option value="4">星期四</option>
+                    <option value="5">星期五</option>
+                    <option value="6">星期六</option>
+                </select><br/>
+                      场地状态:<select name="day.time1">
+                    <option value="111">正在被使用</option>
+                    <option value="222">空闲</option>
+                    <option value="333">维修</option>
+                    <option value="444">教学使用</option>
+                    <option value="555">暂停使用</option>
+                </select><br/>
+        <input type="submit" value="改变" />
+    </form>
+    <br/>
+    <form action="../../site/findWeekBySite.action" method="post">
+       	场地名：<input name="site.siteName" type="text" />         
+        <input type="submit" value="查找周表" />
+    </form>
+    <br/>
 </body>
 </html>
