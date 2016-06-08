@@ -9,8 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -34,10 +34,6 @@ public class OrderPo extends BasePo {
 	private Integer orderType;
 	/* 订单生成时间 */
 	private Date buildTime;
-	/* 预定开始时间 */
-	private Date startTime;
-	/* 时长 (小时) */
-	private Integer timeOut;
 	/* 是否删除  */
 	private Boolean isDelete;
 	/* 用户 */
@@ -91,27 +87,15 @@ public class OrderPo extends BasePo {
 	public void setBuildTime(Date buildTime) {
 		this.buildTime = buildTime;
 	}
-	public Date getStartTime() {
-		return startTime;
-	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-	public Integer getTimeOut() {
-		return timeOut;
-	}
-	public void setTimeOut(Integer timeOut) {
-		this.timeOut = timeOut;
-	}
-	@OneToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="userId",unique=true)
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="userId")
 	public UserPo getUser() {
 		return user;
 	}
 	public void setUser(UserPo user) {
 		this.user = user;
 	}
-	@OneToMany
+	@ManyToMany(fetch=FetchType.LAZY)
 	public List<SitePo> getSiteList() {
 		return siteList;
 	}
@@ -121,8 +105,8 @@ public class OrderPo extends BasePo {
 	@Override
 	public String toString() {
 		return "OrderPo [orderId=" + orderId + ", orderNumber=" + orderNumber + ", orderClass=" + orderClass
-				+ ", orderType=" + orderType + ", buildTime=" + buildTime + ", startTime=" + startTime + ", timeOut="
-				+ timeOut + ", isDelete=" + isDelete + ", user=" + user + ", siteList=" + siteList + "]";
+				+ ", orderType=" + orderType + ", buildTime=" + buildTime + ", isDelete=" + isDelete + ", user=" + user
+				+ ", siteList=" + siteList + "]";
 	}
 	public OrderPo() {
 		super();
