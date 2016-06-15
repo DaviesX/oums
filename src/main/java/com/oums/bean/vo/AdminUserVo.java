@@ -40,9 +40,18 @@ public class AdminUserVo {
 	}
 	@Override
 	public String toString() {
-		return "UserVo [userId=" + userId + ", password=" + password + ", realName="
+/*		return "UserVo [userId=" + userId + ", password=" + password + ", realName="
 				+ realName + ", IDCardNumber=" + IDCardNumber + ", employeeNumber=" + employeeNumber + ", phone=" + phone
-				+ ", lastLoginTime=" + lastLoginTime + ", isDelete=" + isDelete + "]";
+				+ ", lastLoginTime=" + lastLoginTime + ", isDelete=" + isDelete + "]";*/
+		return "\"permission\" : " + "\"" + permission + "\"" + ","
+		     + "\"userId\" : " + "\"" + userId + "\"" + ","
+		     + "\"password\" : " + "\"" + password + "\"" + ","
+		     + "\"realName\" : " + "\"" + realName + "\"" + ","
+		     + "\"IDCardNumber\" : " + "\"" + IDCardNumber + "\"" + ","
+		     + "\"isDelete\" : " + "\"" + isDelete + "\"" + ","
+		     + "\"employeeNumber\" : " + "\"" + employeeNumber + "\"" + ","
+		     + "\"phone\" : " + "\"" + phone + "\"" + ","
+		     + "\"lastLoginTime\" : " + "\"" + lastLoginTime + "\"";
 	}
 	public Integer getUserId() {
 		return userId;
